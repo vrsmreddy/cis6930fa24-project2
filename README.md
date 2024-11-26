@@ -13,18 +13,40 @@ This README provides comprehensive instructions on how to replicate the pipeline
 
 ## Project Structure
 
+The following is the structure of the Unredactor project:
+
 ```
+UNREDACTOR/
 ├── data/
-│   └── unredactor.tsv       # Training and validation data
-├── test.tsv                  # Test data
-├── submission.tsv            # Output predictions
-├── unredactor.py             # Main script for training and prediction
+│   └── unredactor.tsv                  # Dataset containing redacted information
 ├── tests/
-│   └── test_unredactor.py    # Unit tests using pytest
-├── Pipfile                   # Pipenv environment setup
-├── Pipfile.lock              # Pipenv lockfile
-└── README.md                 # Project documentation
+│   └── test_unredactor.py              # Unit tests for the unredactor functionality
+├── Collaborators                    # Collaborators' information
+├── feature_vectorizer.pkl            # Serialized feature vectorizer used for the model
+├── LICENSE                          # License for the project
+├── Pipfile                          # Pipfile for managing dependencies
+├── Pipfile.lock                     # Locked versions of dependencies
+├── README.md                        # Project documentation (this file)
+├── setup.cfg                        # Configuration file for packaging
+├── setup.py                         # Setup script for installation
+├── submission.tsv                   # Submission file (possibly results of unredaction)
+├── test.tsv                         # Test data for evaluation
+├── trained_unredactor_model.pkl     # Trained unredactor model
+├── unredactor.py                    # Main script for the unredactor functionality
 ```
+
+### Description of Key Files and Folders:
+- **data/**: Contains the data used for training and testing, specifically `unredactor.tsv`.
+- **tests/**: Contains unit tests for verifying the core functionality of the project.
+- **feature_vectorizer.pkl**: Pre-trained feature vectorizer used to transform data before feeding it to the model.
+- **trained_unredactor_model.pkl**: The pre-trained model for the unredactor task.
+- **Pipfile & Pipfile.lock**: Used to manage and lock project dependencies.
+- **setup.py & setup.cfg**: Configuration and setup script to package and install the project.
+- **unredactor.py**: Main Python script that contains the logic for unredacting text.
+
+
+
+
 
 ---
 
@@ -504,8 +526,6 @@ The current iteration of the model performed poorly in identifying actor names, 
 - Investigate and apply more advanced text representation techniques, such as embeddings or transformer models.
 - Address data inconsistencies through better preprocessing and normalization.
 - Increase the dataset size and balance to ensure the model has a more even distribution of actor names to learn from.
-
-
 
 ## Evaluation Metrics
 
