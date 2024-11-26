@@ -1,6 +1,6 @@
 # Project-2
 
-# Unredactor: Reconstructing Redacted Names in Text
+# Unredactor: 
 
 ## Overview
 
