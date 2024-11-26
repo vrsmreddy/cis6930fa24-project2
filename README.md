@@ -451,6 +451,62 @@ This test evaluates the entire pipeline, including data loading, preprocessing, 
 
 ---
 
+## Evaluation Results
+
+The evaluation of the model revealed the following metrics on the test data:
+
+- **Precision**: 0.0413
+- **Recall**: 0.0521
+- **F1-Score**: 0.0418
+
+These metrics indicate that the model is struggling with effectively identifying actor names from the input. The low precision implies that there were many false positives in the predictions, while the low recall points to the model missing many of the actual actor names present in the data.
+
+The overall **accuracy** of the model was **0.05** (5%). The macro-average and weighted average metrics, both around 2-4%, similarly suggest that the model is not effectively capturing actor names across the dataset.
+
+### Key Observations:
+
+1. **Class Imbalance**: Many of the actors in the dataset had very few occurrences, leading to a severe class imbalance problem. The model had trouble generalizing across all the names, resulting in a lack of precision and recall, especially for actors with fewer samples.
+
+2. **Data Complexity**: Some actor names had variations or were combined with additional text, leading to a higher rate of misclassification. Examples include different spellings of the same actor's name or actor names that were accompanied by additional descriptors (e.g., "Pierce Brosnan" vs. "Brosnan"). This inconsistency made it difficult for the model to identify names reliably.
+
+3. **Low Recall**: A recall value of 0.0521 indicates that the model missed most of the actual actor names in the input data. This can be attributed to inadequate training data or insufficient complexity in the model architecture.
+
+4. **Submission Results**: The results saved in `submission.tsv` included predictions for 200 samples from the test set. These predictions further highlighted the model's difficulty in distinguishing actor names accurately. Many predicted names were either incorrect or did not match the intended actor due to noise or lack of contextual understanding.
+
+## Challenges
+
+1. **Class Overlap and Similar Names**: Some actor names were highly similar, which led to incorrect predictions. For example, the model often confused "William Haines" with "William Powell" due to similarities in first names and the nature of their appearances in the dataset.
+
+2. **Inconsistent Representation**: In the dataset, actor names sometimes appeared in different formats (e.g., full names, last names only, or with additional descriptors). This led to poor model generalization as it struggled to understand these variations.
+
+3. **Model Complexity**: The model may have been too simplistic to adequately capture the complexity of actor names in a real-world context. A more advanced architecture, such as a transformer-based model, may help improve name identification by considering the context better.
+
+## Future Improvements
+
+To improve the model's performance and address the issues identified above, several steps can be taken:
+
+1. **Increase Training Data**: Collecting more examples of actor names, especially for underrepresented names, would help balance the dataset and improve the model's ability to generalize.
+
+2. **Data Preprocessing**: Standardizing the representation of actor names in the dataset (e.g., always using full names) could help the model learn more effectively. Techniques such as entity normalization could be applied to make all variations of a name consistent.
+
+3. **Advanced Model Architecture**: Implementing a transformer-based model like BERT or GPT-2 could potentially improve the model's understanding of context and reduce misclassification. These models are better equipped to deal with the complexities of text and could significantly enhance recall and precision.
+
+4. **Fine-Tuning Hyperparameters**: Fine-tuning the model's hyperparameters, such as learning rate and number of layers, might also help achieve better performance.
+
+5. **Address Class Imbalance**: Techniques like oversampling or using synthetic data generation (e.g., SMOTE) could be used to handle the class imbalance issue.
+
+## Conclusion
+
+The current iteration of the model performed poorly in identifying actor names, achieving only around 5% accuracy. The low precision and recall values highlight the need for better data preprocessing, increased training data, and potentially more complex modeling approaches to improve performance. Future iterations will focus on enhancing data quality, employing more sophisticated model architectures, and addressing class imbalance to improve the overall effectiveness of the actor name classification task.
+
+## Next Steps
+
+- Investigate and apply more advanced text representation techniques, such as embeddings or transformer models.
+- Address data inconsistencies through better preprocessing and normalization.
+- Increase the dataset size and balance to ensure the model has a more even distribution of actor names to learn from.
+
+
+
 ## Evaluation Metrics
 
 - **Precision**: Measures the accuracy of positive predictions.
