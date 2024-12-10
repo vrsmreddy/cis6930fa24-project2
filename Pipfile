@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 pandas = "*"
-nltk = "*"
+nltk = "==3.8.1"
 scikit-learn = "*"
 joblib = "*"
 python-Levenshtein = "*"
